@@ -1,16 +1,45 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# KnowledgeView
 
-Currently, two official plugins are available:
+A minimal, local-first web viewer for Obsidian and Markdown knowledge bases. Built to be fast, entirely browser-based, and completely private. Built with Gemini Pro.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Zero-Server Setup:** Uses the HTML5 File System API to read local `.md` folders directly in the browser. No backend required.
+- **Spotlight Search:** A `cmdk` powered command bar with a custom scoring algorithm that instantly searches across folder paths, file titles, tags, and content.
+- **First-Class Markdown:** Renders Obsidian-flavored markdown, including `[[Wikilinks]]`, YAML frontmatter (for tags), and full LaTeX math support.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Framework:** React + Vite
+- **Styling:** Tailwind CSS + CSS Variables
+- **Search:** Custom JS token-scoring algorithm + `cmdk`
+- **Markdown Processing:** `react-markdown`, `remark-math`, `rehype-katex`, `front-matter`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start the local development server:
+   ```bash
+   npm run dev
+   ```
+
+
+3. Open the app in your browser, click **Select Obsidian Folder**, and point it to your root vault.
+
+### Building for Offline Use
+
+To create a single, double-clickable file that you can use anywhere without running a server:
+
+   ```bash
+   npm run build
+   ```
+
+Grab the resulting `index.html` from the `dist/` folder.
+*(Note: requires the `vite-plugin-singlefile` configuration).*
+
+You can just copy and paste this directly into a `README.md` file in the root of your project! Let me know if you want to add or tweak anything.
